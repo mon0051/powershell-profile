@@ -17,3 +17,7 @@ if (Test-Path($ChocolateyProfile)) {
 function powerhome{
     cd $env:MY_POWERSHELL_HOME
 }
+
+function rebash(){
+  . $profile
+}

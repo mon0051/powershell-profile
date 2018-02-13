@@ -22,3 +22,11 @@ function gmom{
     git fetch
     git merge origin/master
 }
+
+function gitIsClean(){
+    if(git status --porcelain){
+        return 0
+    }else{
+        return 1
+    }
+}
