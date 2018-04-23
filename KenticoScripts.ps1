@@ -17,8 +17,8 @@ function RunKenticoContinuousIntegrationTool($Path){
 
 function StopExternalKenticoServices($Path){
      $servicesStopped =  @(Get-WmiObject win32_service `
-        | ?{ $_.Name -Like "KenticoCMS*" -And $_.State -Eq "Running" -And $_.PathName -like '*'+ $Path +'"' } `
-        | % {
+        | Where-Object{ $_.Name -Like "KenticoCMS*" -And $_.State -Eq "Running" -And $_.PathName -like '*'+ $Path +'"' } `
+        | ForEach-Object {
             Stop-Service $_.Name
             return $_.Name
         })
@@ -33,7 +33,7 @@ function BringApplicationOnlineIfRequired($Path, $thisScriptTookApplicationOffli
 }
 
 function StartKenticoServices($ServicesStoped) {
-    $ServicesStoped | % { Start-Service $_ }
+    $ServicesStoped | ForEach-Object { Start-Service $_ }
 }
 
 function Merge-KenticoCI($Path){
