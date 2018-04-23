@@ -7,6 +7,9 @@ Set-PSReadlineOption -BellStyle None
 . "$env:MY_POWERSHELL_HOME\KenticoScripts.ps1"
 . "$env:MY_POWERSHELL_HOME\NvmFunctions.ps1"
 . "$env:MY_POWERSHELL_HOME\ProjectShortcuts.ps1"
+. "$env:MY_POWERSHELL_HOME\SqlScripts.ps1"
+. "$env:MY_POWERSHELL_HOME\ImageMagick.ps1"
+. "$env:MY_POWERSHELL_HOME\FileHelpers.ps1"
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
