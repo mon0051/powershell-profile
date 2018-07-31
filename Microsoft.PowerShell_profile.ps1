@@ -10,6 +10,7 @@ Set-PSReadlineOption -BellStyle None
 . "$env:MY_POWERSHELL_HOME\SqlScripts.ps1"
 . "$env:MY_POWERSHELL_HOME\ImageMagick.ps1"
 . "$env:MY_POWERSHELL_HOME\FileHelpers.ps1"
+. "$env:MY_POWERSHELL_HOME\VisualStudio.ps1"
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
@@ -24,3 +25,9 @@ function powerhome{
 function rebash(){
   . $profile
 }
+
+if($powershell_profile_loaded -ne "yes"){
+  cd ~/
+}
+
+$powershell_profile_loaded = "yes"

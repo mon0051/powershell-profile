@@ -30,3 +30,11 @@ function gitIsClean(){
         return 1
     }
 }
+
+function cleanMergedBranches{
+    git branch --merged | ForEach-Object{$_.trim()} | Where-Object{$_ -notmatch 'develop' -and $_ -notmatch 'master'} | ForEach-Object{git branch -d $_}
+}
+
+function gcmb{
+    cleanMergedBranches
+}
