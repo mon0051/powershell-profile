@@ -5,9 +5,9 @@
 . "$env:MY_POWERSHELL_HOME\VisualStudio.ps1"
 
 function LoadAllProjectScripts{
-    $ProjectScriptsFolder = "$env:MY_POWERSHELL_HOME\ProjectScripts"
-    Get-ChildItem -Path $ProjectScriptsFolder -Filter *.ps1 | ForEach-Object { . $_.FullName }
+    $Path = "$env:MY_POWERSHELL_HOME\ProjectScripts"
+    Get-ChildItem -Path $Path -Filter *.ps1 |ForEach-Object { . $_.FullName }
 }
 
-LoadAllProjectScripts
+. LoadAllProjectScripts
 
