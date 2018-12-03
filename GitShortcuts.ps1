@@ -38,3 +38,38 @@ function cleanMergedBranches{
 function gcmb{
     cleanMergedBranches
 }
+
+function gnb{
+    git checkout master
+    git checkout -b $args
+}
+
+function NewBranch{
+    gnb $args
+}
+
+function Git-BranchExists($branchName){
+    $branch = git branch | select-string $branchName
+    if($branch){
+        return $true
+    }
+    else{
+        return $false
+    }
+}
+
+function gbe($branchName){
+    return Git-BranchExists $branchName
+}
+
+function co($branchName){
+    $fixBranch = gbe $branchName
+    
+    if($fixBranch){
+        $fullBranch = git branch | select-string $branchName
+        $fullBranch = $fullBranch.Line.Trim()
+        git checkout $fullBranch
+    }else{
+        Write-Warning -Message "Could not find any branch with $branchName included"
+    }
+}
