@@ -2,6 +2,10 @@ function gst{
     git status
 }
 
+function pulldown{
+    git pull
+}
+
 function gaa{
     git add -A
 }
